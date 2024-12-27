@@ -1,0 +1,9 @@
+*
+!.gitignore
+!*.h
+!*.cpp
+!makefile
+!cmn/
+!cmn/*
+!day*/
+!day*/*
