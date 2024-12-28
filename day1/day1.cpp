@@ -3,8 +3,6 @@
 #include "inputreader.h"
 #include "inputdata1.h"
 
-template InputData1<long> InputReader::readf<InputData1, long>();
-
 int main(void)
 {
      using std::cout;
