@@ -5,9 +5,6 @@ obj			:= ${bin:=.o}
 src			:= ${bin:=.cpp}
 
 cmndir			:= cmn
-cmnsrcs			:= $(wildcard $(cmndir)/*.cpp)
-cmnobjs			:= $(patsubst %.cpp, %.o, $(cmnsrcs))
-cmnarch			:= $(cmndir)/cmn.a
 
 CXX			:= g++
 
@@ -24,15 +21,12 @@ CXXFLAGS		+= -I$(cmndir)
 LDFLAGS			:=
 LDFLAGS			+= -L.
 
-$(dir)/$(bin): $(cmnarch) $(dir)/$(obj)
+$(dir)/$(bin): $(dir)/$(obj)
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
 $(dir)/$(obj): $(dir)/$(src)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-$(cmnarch): $(cmnobjs)
-	ar rcs $@ $^
-
 .PHONY: clean
 clean:
-	@rm -Rf $(dir)/$(bin) $(dir)/$(obj) $(cmnarch)
+	@rm -Rf $(dir)/$(bin) $(dir)/$(obj)
